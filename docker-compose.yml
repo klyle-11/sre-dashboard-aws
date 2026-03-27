@@ -1,0 +1,10 @@
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2
+    container_name: metal-sre-jaeger
+    ports:
+      - '16686:16686'
+      - '4318:4318'
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    restart: unless-stopped

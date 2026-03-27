@@ -1,3 +1,18 @@
+## M-E-T-A-L site reliability engineering dashboard
+*Monitoring, Errors, Traceability/Testing, Alerting, Logging*
+
+by [Khalil Abdellah](https://www.linkedin.com/in/khalilabdellah), Philly SRE engineer
+
+- This is a React UI dashboard project showing traces, alerts, logs, etc. from various sources incl. AWS Cloudwatch, OpenTelemetry, and more to come.  
+
+## to-do 
+---
+- [ ] Sim data
+- [ ] Traceability with Opentelemetry
+
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
