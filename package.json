@@ -15,14 +15,16 @@
     "test:coverage": "vitest run --coverage",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "validate": "npm run typecheck && npm run lint && npm run format:check && npm run test"
+    "validate": "npm run typecheck && npm run lint && npm run format:check && npm run test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch": "^3.1014.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.214.0",
-    "@opentelemetry/resources": "^2.6.1",
+    "@opentelemetry/resources": "^2.7.0",
     "@opentelemetry/sdk-node": "^0.214.0",
-    "@opentelemetry/sdk-trace-node": "^2.6.1",
+    "@opentelemetry/sdk-trace-node": "^2.7.0",
     "@opentelemetry/semantic-conventions": "^1.40.0",
     "@playwright/test": "^1.58.2",
     "@testing-library/jest-dom": "^6.9.1",
@@ -38,18 +40,27 @@
     "swr": "^2.4.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.1",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/addon-docs": "^10.3.3",
+    "@storybook/addon-vitest": "^10.3.3",
+    "@storybook/nextjs-vite": "^10.3.3",
     "@tailwindcss/postcss": "^4",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/browser-playwright": "^4.1.0",
     "@vitest/coverage-v8": "^4.1.0",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.0",
+    "eslint-plugin-storybook": "^10.3.3",
+    "storybook": "^10.3.3",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vite": "^8.0.3",
     "vitest": "^4.1.0"
   }
 }
