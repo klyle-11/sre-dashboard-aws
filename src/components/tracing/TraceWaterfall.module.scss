@@ -1,0 +1,193 @@
+@use '@/styles/mixins' as *;
+
+$services: api-gateway, auth-service, user-service, search-service, billing-service, notification-service, cache, postgres;
+
+.waterfall {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    &__empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: var(--color-text-muted);
+        font-size: var(--text-sm);
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-3) var(--space-4);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--color-text);
+    }
+
+    &__id {
+        margin: 0;
+        margin-top: 0.125rem;
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+    }
+
+    &__status {
+        padding: 0 var(--space-2);
+        height: 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        border-radius: var(--radius-pill);
+        font-weight: 500;
+
+        &--ok {
+            background: color-mix(-in srgb, var(--color-ok) 20%, transparent);
+            color: var(--color-ok);
+        }
+
+        &--error {
+            background: color-mix(-in srgb, var(--color-ok) 20%, transparent);
+            color: var(--color-error);
+        }
+    }
+
+    &__body {
+        flex: 1;
+        overflow-y: auto;
+        @include scrollbar-thin;
+    }
+
+    &__row {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+
+    &__row-button {
+        width: 100%;
+        text-align: left;
+        transition: background var(--motion-fast) var(--easing-standard);
+        @include focus-ring;
+
+        &:hover {
+            background: color-mix(in srgb, var(--color-surface-elevated) 40%, transparent);
+        }
+    }
+
+    &__row-content {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-2) var(--space-3);
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        flex-shrink: 0;
+        width: 240px;
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+    }
+
+    &__indicator {
+        display: inline-block;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: var(--radius-sm);
+        flex-shrink: 0;
+        background: var(--color-service-default);
+
+        @each $name in $services {
+            &--#{$name} { background: var(--color-service-#{$name}); }
+        }
+    }
+
+    &__service {
+        color: var(--color-text);
+    }
+
+    &__operation {
+        @include truncate-1;
+    }
+
+    &__bar-track {
+        flex: 1;
+        position: relative;
+        height: 1.5rem;
+        background: color-mix(in srgb, var(--color-surface-elevated) 50%, transparent);
+        border-radius: var(--radius-sm);
+    }
+
+    &__bar {
+        position: absolute;
+        top: 0.125rem;
+        border-radius: var(--radius-sm);
+        background: var(--color-service-default);
+        opacity: 0.7;
+        transition: opacity var(--motion-fast) var(--easing-standard);
+
+        @each $name in $services {
+            &--#{$name} { background: var(--color-service-#{$name}); }
+        }
+
+        &--error {
+            background: var(--color-error);
+            opacity: 0.9;
+        }
+    }
+
+    &__duration {
+        flex-shrink: 0;
+        width: 4rem;
+        text-align: right;
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+    }
+
+    &__details {
+        padding: var(--space-2) var(--space-4);
+        background: color-mix(in srgb, var(--color-surface-elevated) 30%, transparent);
+        border-top: 1px solid var(--color-border);
+    }
+
+    &__details-grid {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: var(--space-4);
+        row-gap: var(--space-1);
+        font-size: var(--text-xs);
+    }
+
+    &__detail-key {}
+
+    &__detail-value {
+
+        &--error {}
+        &--ok {}
+        &--mono {}
+    }
+
+
+}
+

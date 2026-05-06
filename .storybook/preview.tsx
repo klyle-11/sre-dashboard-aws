@@ -1,8 +1,8 @@
 import type { Preview } from '@storybook/nextjs-vite'
-import { a11yAddon } from '@storybook/addon-a11y/preview'
+// import { a11yAddon } from '@storybook/addon-a11y/preview'
+import '../src/app/globals.css';
 
 const preview: Preview = {
-  addons: [a11yAddon()],
   parameters: {
     controls: {
       matchers: {

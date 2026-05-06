@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import type { ServiceNode } from '@/types/tracing';
+import styles from './ServiceMap.module.scss';
 
 interface ServiceMapProps {
     serviceNodes: ServiceNode[];
@@ -22,9 +23,9 @@ const ORBIT_RADIUS_X = 220;
 const ORBIT_RADIUS_Y = 140;
 
 function errorColor(errorRate: number): string {
-    if (errorRate > 10) return '#ef4444';
-    if (errorRate > 2) return '#f59e0b';
-    return '#22c55e';
+    if (errorRate > 10) return 'var(--color-error)';
+    if (errorRate > 2) return 'var(--color-warn';
+    return 'var(--color-ok)';
 }
 
 function edgeWidth(requestRate: number): number {

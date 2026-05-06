@@ -1,0 +1,61 @@
+:root {
+    /* colors */
+    --color-bg: #0a0a0a;
+    --color-surface: #19191b;
+    --color-surface-elevated: #27272a;
+    --color-border: #27272a;
+    --color-text : #e4e4e7;
+    --color-text-muted : #71717a;
+
+    --color-ok: #22c55e;
+    --color-warn: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+    --color-accent: #3b82f6;
+    --color-neutral: #71717a;
+
+    --color-service-api-gateway: #3b82f6;
+    --color-service-auth-service: #8b5cf6;
+    --color-service-user-service: #10b981;
+    --color-service-search-service: #f59e0b;
+    --color-service-billing-service: #ec4899;
+    --color-service-notification-service: #06b6d4;
+    --color-service-cache: #eab308;
+    --color-service-postgres: #f97316;
+    --color-service-default: #71717a;
+
+    /* spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+
+    /* typography */
+    --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono: ui-monospace, "JetBrains Mono", Menlo, monospace;;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+
+    /* radii */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-pill: 9999px;
+
+    /* motion */
+    --motion-fast: 120ms;
+    --motion-base: 200ms;
+    --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* layers */
+    --z-sidebar: 10;
+    --z-overlay: 50;
+    --z-toast: 100;
+}

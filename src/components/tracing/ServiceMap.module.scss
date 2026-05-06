@@ -1,0 +1,16 @@
+.serviceMap {
+    width: 100%;
+    &__svg { width: 100%; height: auto; }
+    &__node-label {
+        fill: var(--color-text);
+        font-size: var(--text-xs);
+        text-anchor: middle;
+        dominant-baseline: middle;
+    }
+    &__metric-label {
+        fill: var(--color-text-muted);
+        font-size: 8px;
+        text-anchor: middle;
+    }
+    &__edge { stroke: var(--color-border); stroke-opacity: 0.6; }
+}

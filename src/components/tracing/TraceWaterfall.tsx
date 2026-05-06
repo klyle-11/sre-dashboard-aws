@@ -2,6 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import type { Span, Trace } from '@/types/tracing';
+import styles from './TraceWaterfall.module.scss';
+import { Span } from 'next/dist/trace';
+
 interface TraceWaterfallProps {
     trace: Trace | null;
 }
@@ -11,20 +14,12 @@ interface FlattenedSpan {
     depth: number;
 }
 
-const SERVICE_COLORS: Record<string, string> = {
-    'api-gateway': 'bg-blue-500',
-    'auth-service': 'bg-violet-500',
-    'user-service': 'bg-emerald-500',
-    'search-service': 'bg-amber-500',
-    'billing-service': 'bg-pink-500',
-    'notification-service': 'bg-cyan-500',
-    cache: 'bg-yellow-500',
-    postgres: 'bg-orange-500',
+const KNOWN_SERVICES = new Set(['api-gateway', 'auth-service', 'user-service', 'search-service', 'billing-service', 'notification-service', 'cache', 'postgres']);
+
+function serviceModifier(name: string): string {
+    return KNOWN_SERVICES.has(name) ? name: 'default';
 }
 
-function getServiceColor(serviceName: string): string {
-    return SERVICE_COLORS[serviceName] ?? 'bg-zinc-500';
-}
 
 function flattenSpanTree(spans: Span[]): FlattenedSpan[] {
     const childrenMap = new Map<string | 'root', Span[]>();
@@ -75,16 +70,17 @@ function SpanBar({
     const leftPercent = traceDuration > 0 ? (span.startTime / traceDuration) * 100 : 0;
     const widthPercent = traceDuration > 0 ? Math.max(0.5, (span.duration / traceDuration) * 100) : 0;
     const isError = span.status === 'error';
-    const barColor = isError ? 'bg-red-500' : getServiceColor(span.serviceName);
     
+    const barModifier = isError ? 'error' : serviceModifier(span.serviceName);
+
     return (
-        <div className="border-b border-zinc-800">
+        <div className={styles.waterfall__row}>
             <button
                 type="button"
                 onClick={onToggle}
                 className="w-full text-left hover:bg-zinc-800/40 transition-colors"
             >
-                <div className="flex items-cetner gap-2 px-3 py-2">
+                <div className="flex items-center gap-2 px-3 py-2">
                     <div
                         className="flex items-center gap-1 shrink-0 text-cs text-zinc-400"
                         style={{ paddingLeft: `${depth * 20}px`, width: '240px' }}

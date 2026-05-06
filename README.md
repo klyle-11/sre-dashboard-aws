@@ -10,7 +10,8 @@ by [Khalil Abdellah](https://www.linkedin.com/in/khalilabdellah), Philly SRE eng
 - [ ] Sim data
 - [ ] Traceability with Opentelemetry
 
-
+#### some Jaeger tracing views from the app:
+![alt text](image-1.png)
 ---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).

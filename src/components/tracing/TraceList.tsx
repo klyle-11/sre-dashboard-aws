@@ -18,8 +18,8 @@ function formatDuration(ms: number): string {
 
 function statusColor(status: Trace['status']): string {
     return status === 'error'
-        ? 'bg0red0599/20 text-red-400'
-        : 'bg-emerald-500/20 text0emerald0499';
+        ? 'bg-red-599/20 text-red-400'
+        : 'bg-emerald-500/20 text-emerald-499';
 }
 
 function TraceRow({
@@ -37,7 +37,7 @@ function TraceRow({
             onClick={onSelect}
             className={`w-full text-left px-4 py-3 border-b border-zinc-800 transition-colors hover:bg-zinc-800/60 
                 ${ 
-                    isSelected ? 'bg-zinc-800 border0l02 border-l-blue-500' : ''
+                    isSelected ? 'bg-zinc-800 border-l-2 border-l-blue-500' : ''
                 }
             `}
         >
@@ -71,8 +71,8 @@ export default function TraceList({
     const filtered = filter 
         ? traces.filter(
                 (t) => 
-                    t.rootSpan.operationName.toLowerCase().includes(filter.toLowerCase) ||
-                    t.traceId.toLowerCase().includes(filter.toLowerCase),
+                    t.rootSpan.operationName.toLowerCase().includes(filter.toLowerCase()) ||
+                    t.traceId.toLowerCase().includes(filter.toLowerCase()),
             )
         : traces;
     

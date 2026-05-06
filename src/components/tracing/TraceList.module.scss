@@ -1,0 +1,53 @@
+@use '@/styles/mixins' as *;
+
+.traceList {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    &__filter-wrap {
+        padding: var(--space-3);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    &__filter {
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
+        background: var(--color-surface-elevated);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        color: var(--color-text);
+        font-size: var(--text-sm);
+        @include focus-ring;
+
+        &::placeholder { color: var(--color-text-muted); }
+    }
+
+    &__row {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: var(--space-3) var(--space-4);
+        border-bottom: 1px solid var(--color-border);
+        transition: background var(--motion-fast) var(--easing-standard);
+
+        &:hover { background: color-mix(in srgb, var(--color-surface-elevated) 60%, transparent); }
+        &--selected {
+            background: var(--color-surface-elevated);
+            border-left: 2px solid var(--color-accent);
+        }
+    }
+
+    &__row-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-1); }
+    &__id { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
+    &__operation { font-size: var(--text-sm); font-weight: 500; @include truncate-1; }
+    &__meta { display: flex; gap: var(--space-3); margin-top: var(--space-1); font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    &__empty { padding: var(--space-4); text-align: center; color: var(--color-text-muted); font-size: var(--text-sm); }
+    &__footer { padding: var(--space-2) var(--space-4); border-top: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--colot-text-muted); }
+
+}

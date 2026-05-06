@@ -1,0 +1,26 @@
+[18:58:05.805] [INFO] storybook v10.3.5
+[18:58:09.094] [DEBUG] Getting package.json info for C:/Users/khali/csprojects/metal-sre-dashboard-aws/package.json...
+[18:58:11.364] [INFO] Storybook collects completely anonymous usage telemetry. We use it to shape Storybook's roadmap and prioritize features. You can learn more, including how to opt out, at https://storybook.js.org/telemetry
+[18:58:13.636] [WARN] 🚨 Unable to index ./src/stories/Skeleton.stories.tsx:
+  SyntaxError: Unexpected token, expected "," (28:5)
+    at constructor (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:12171:21)
+    at Parser.raise (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:16356:71)
+    at Parser.unexpected (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:16373:20)
+    at Parser.expect (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:16581:32)
+    at Parser.parseObjectLike (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:19571:25)
+    at Parser.parseExprAtom (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:19302:25)
+    at Parser.parseExprAtom (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:15093:181)
+    at Parser.parseExprSubscripts (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:19165:105)
+    at Parser.parseUpdate (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:19156:57)
+    at Parser.parseMaybeUnary (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-JXXWBFBF.js:19141:25)
+[18:58:13.649] [ERROR] Error: Unable to index ./src/stories/Skeleton.stories.tsx
+    at _StoryIndexGenerator.getIndexAndStats (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/core-server/index.js:6282:15)
+    at async _StoryIndexGenerator.getIndex (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/core-server/index.js:6271:13)
+    at async Object.experimental_serverChannel (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/@storybook/addon-vitest/dist/preset.js:464:14)
+    at async buildDevStandalone (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/core-server/index.js:8027:32)
+    at async withTelemetry (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/_node-chunks/chunk-FIR43JGQ.js:225:12)
+    at async dev (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/bin/core.js:2736:3)
+    at async _Command.<anonymous> (file:///C:/Users/khali/csprojects/metal-sre-dashboard-aws/node_modules/storybook/dist/bin/core.js:2806:92)
+[18:58:13.652] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[18:58:28.440] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}

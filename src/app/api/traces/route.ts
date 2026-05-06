@@ -1,13 +1,17 @@
 import { fetchTraces } from '@/lib/jaeger';
 
-function parseParam(): string {
-    const value = SearchParamsContext.get(key);
+function parseParam(
+    searchParams: URLSearchParams,
+    key: string,
+    fallback: string,
+): string {
+    const value = searchParams.get(key);
     return value && value.trim().length > 0 ? value.trim() : fallback;
 }
 
 export async function GET(request: Request) {
     const url = new URL(request.url);
-    const service = parseParam(url.searchParams, 'service', 'metal-sre-dashboard'););
+    const service = parseParam(url.searchParams, 'service', 'metal-sre-dashboard');
     const lookback = parseParam(url.searchParams, 'lookback', '1h');
 
     try {

@@ -1,0 +1,10 @@
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.skeleton {
+    background: var(--color-surface-elevated);
+    border-radius: var(--radius-sm);
+    animation: pulse 2s var(--easing-standard) infinite;
+}

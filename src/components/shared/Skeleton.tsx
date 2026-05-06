@@ -1,3 +1,5 @@
+import styles from './Skeleton.module.scss';
+
 interface SkeletonProps {
     className?: string;
 }
@@ -5,7 +7,7 @@ interface SkeletonProps {
 export default function Skeleton({ className = '' }: SkeletonProps) {
     return (
         <div 
-            className={`animate-pulse rounded bg-zinc-800 ${className}`}
+            className={`${styles.skeleton} ${className}`}
             role="status"
             aria-label="Loading"
         />
