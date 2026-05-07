@@ -1,0 +1,22 @@
+@use '@/styles/mixins' as *;
+
+.shell {
+    display: grid;
+    grid-template-columns: auto1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "sidebar main"
+        "sidebar status";
+    height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+
+    &__sidebar { grid-area: sidebar; }
+    &__main {
+        grid-area: main;
+        overflow-y: auto;
+        padding: var(--space-4);
+        @include scrollbar-thin;
+    }
+    &__status { grid-area: status; }
+}
