@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import type { Span, Trace } from '@/types/tracing';
 import styles from './TraceWaterfall.module.scss';
-import { Span } from 'next/dist/trace';
 
 interface TraceWaterfallProps {
     trace: Trace | null;
@@ -78,55 +77,50 @@ function SpanBar({
             <button
                 type="button"
                 onClick={onToggle}
-                className="w-full text-left hover:bg-zinc-800/40 transition-colors"
+                className={`${styles['waterfall__row-button']}`}
             >
-                <div className="flex items-center gap-2 px-3 py-2">
+                <div className={styles['waterfall__row-content']}>
                     <div
-                        className="flex items-center gap-1 shrink-0 text-cs text-zinc-400"
-                        style={{ paddingLeft: `${depth * 20}px`, width: '240px' }}
+                        className={styles.waterfall__label}
+                        style={{ paddingLeft: `${depth * 20}px` }}
                     >
                         <span 
-                            className={`inline-block w-2.5 h-2.5 rounded-sm shrink-0 ${barColor}`}
+                            className={`${styles.waterfall__indicator} ${styles[`waterfall__indicator-${serviceModifier(span.serviceName)}`]}`}
                         />
-                        <span>{span.serviceName}</span>
-                        <span>{span.operationName}</span>
+                        <span className={styles.waterfall__service}>{span.serviceName}</span>
+                        <span className={styles.waterfall__operation}>{span.operationName}</span>
                     </div>
-                    <div className="flex-1 relative h-6 bg-zinc-800/50 rounuded">
+                    <div className={styles['watterfall__bar-track']}>
                         <div 
-                            className={`absolute top-0.5 bottom-0.5 rounded ${barColor} ${
-                                isError ? 'opacity-90' : 'opacity-70'
-                            }`} 
+                            className={`${styles.waterfall__bar} ${styles[`waterfall__bar--${barModifier}`]}`} 
                             style={{
                                 left: `${leftPercent}`,
                                 width: `${widthPercent}`,
                             }}
                         />
                     </div>
-                    <span className="shrink-0 text-xs font-mono text-zinc-400 w-16 text-right">
+                    <span className={styles.waterfall__duration}>
                         {formatMs(span.duration)}
                     </span>
                 </div>
             </button>
             {isExpanded && (
-                <div className="px-4 py-2 bg-zinc-800/30 border-t border-zinc-800">
-                    <div
-                        className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs"
-                        style={{ paddingLeft: `${depth * 20 + 20}px` }}
-                    >
-                        <span className="text-zinc-500">Span ID</span>
-                        <span className="text-zinc-300">{span.spanId}</span>
-                        <span className="text-zinc-500">Service</span>
-                        <span className="text-zinc-300">{span.serviceName}</span>
-                        <span className="text-zinc-500">Operation</span>
-                        <span className="text-zinc-300">{span.operationName}</span>
-                        <span className="text-zinc-500">Duration</span>
-                        <span className="text-zinc-300">{formatMs(span.duration)}</span>
-                        <span className="text-zinc-500">Status</span>
+                <div className={styles.waterfall__details}>
+                    <div className={styles['waterfall__details-grid']}>
+                        <span className={styles['waterfall__detail-key']}>Span ID</span>
+                        <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{span.spanId}</span>
+                        <span className={styles['waterfall__detail-key']}>Service</span>
+                        <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{span.serviceName}</span>
+                        <span className={styles['waterfall__detail-key']}>Operation</span>
+                        <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{span.operationName}</span>
+                        <span className={styles['waterfall__detail-key']}>Duration</span>
+                        <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{formatMs(span.duration)}</span>
+                        <span className={styles['waterfall__detail-key']}>Status</span>
                         <span className={isError ? 'text-red-400' : 'text-emerald-400'}>{span.status}</span>
                         {Object.entries(span.tags).map(([key, value]) => (
                             <div key={key} className="contents">
-                                <span className="text-zinc-500">{key}</span>
-                                <span className="font-mono text-zinc-300">{value}</span>
+                                <span className={styles['waterfall__detail-key']}>{key}</span>
+                                <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{value}</span>
                             </div>
                         ))}
                     </div>

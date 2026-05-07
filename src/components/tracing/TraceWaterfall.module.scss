@@ -179,13 +179,16 @@ $services: api-gateway, auth-service, user-service, search-service, billing-serv
         font-size: var(--text-xs);
     }
 
-    &__detail-key {}
+    &__detail-key {
+        color: var(--color-text-muted);
+    }
 
     &__detail-value {
+        color: var(--color-text);
 
-        &--error {}
-        &--ok {}
-        &--mono {}
+        &--error { color: var(--color-error); }
+        &--ok { color: var(--color-ok); }
+        &--mono { font-family: var(--font-mono); }
     }
 
 

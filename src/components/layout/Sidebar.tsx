@@ -10,7 +10,7 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-    { label: 'Tracing', href: '/alerting', letter: 'T' },
+    { label: 'Tracing', href: '/tracing', letter: 'T' },
 ];
 
 export default function Sidebar() {
