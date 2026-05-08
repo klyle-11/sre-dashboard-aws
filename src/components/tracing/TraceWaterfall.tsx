@@ -116,7 +116,7 @@ function SpanBar({
                         <span className={styles['waterfall__detail-key']}>Duration</span>
                         <span className={`${styles['waterfall__detail-value']} ${styles['waterfall__detail-value--mono']}`}>{formatMs(span.duration)}</span>
                         <span className={styles['waterfall__detail-key']}>Status</span>
-                        <span className={isError ? 'text-red-400' : 'text-emerald-400'}>{span.status}</span>
+                        <span className={styles[`waterfall__detail-value--${ isError ? 'error' : 'ok' }`]}>{span.status}</span>
                         {Object.entries(span.tags).map(([key, value]) => (
                             <div key={key} className="contents">
                                 <span className={styles['waterfall__detail-key']}>{key}</span>
@@ -140,39 +140,35 @@ export default function TraceWaterfall({ trace }: TraceWaterfallProps) {
     }, [trace]);
 
     if (!trace) {
-        <div className="flex items-center justify-center h-full text-zinc-500 text-sm">
+        <div className={styles.waterfall__empty}>
             Click a trace from the list to show its waterfall viz
         </div>
     }
     
     return (
-        <div className="flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
-            <div className="px-4 py-3 border-b border-zinc-800">
-                <div className="flex items-center justify-between">
+        <div className={styles.waterfall}>
+            <div className={styles.waterfall__header}>
+                <div className={"styles.waterfall__header-inner"}>
                     <div>
-                        <h3 className="text-sm font-medium text-zinc-200">
+                        <h3 className={styles.waterfall__title}>
                             {trace?.rootSpan.operationName}
                         </h3>
-                        <p className="text-xs text-zinc-500 font-mono mt-0.5">
+                        <p className={styles.waterfall__id}>
                             {trace?.traceId}
                         </p>
                     </div>
-                    <div className="flex items-center gap-3 text-xs text-zinc-400">
+                    <div className={styles.waterfall__meta}>
                         <span>{formatMs(trace?.duration ?? 0)}</span>
                         <span>{trace?.spans.length} spans</span>
                         <span
-                            className={`px-2 py-0.5 rounded-full font-medium ${
-                                trace?.status === 'error'
-                                    ? 'bg-red-500/20 text-red-400'
-                                    : 'bg-emerald-500/20 text-emerald-400'
-                            }`}
+                            className={`${styles.waterfall__status} ${styles[`waterfall__status--${trace?.status ?? 'ok'}`]}`}
                         >
                             {trace?.status}
                         </span>
                     </div>
                 </div>
             </div>
-            <div className="flex-1 overflow-y-auto">
+            <div className={styles.waterfall__body}>
                 {flatSpans.map((entry) => (
                     <SpanBar 
                         key={entry.span.spanId}

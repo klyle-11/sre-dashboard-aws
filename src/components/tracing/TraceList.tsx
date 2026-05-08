@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Trace } from '@/types/tracing';
+import styles from './TraceList.module.scss';
 
 interface TraceListProps {
     traces: Trace[];
@@ -35,10 +36,7 @@ function TraceRow({
         <button
             type="button"
             onClick={onSelect}
-            className={`w-full text-left px-4 py-3 border-b border-zinc-800 transition-colors hover:bg-zinc-800/60 
-                ${ 
-                    isSelected ? 'bg-zinc-800 border-l-2 border-l-blue-500' : ''
-                }
+            className={`${styles.traceList__row} ${isSelected ? styles['tracelList__row--selected'] : ''}
             `}
         >
             <div className="flex items-center justify-between mb-1">
