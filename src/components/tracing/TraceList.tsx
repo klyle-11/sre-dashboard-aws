@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Trace } from '@/types/tracing';
 import styles from './TraceList.module.scss';
+import Badge from '@/components/shared/Badge';
 
 interface TraceListProps {
     traces: Trace[];
@@ -17,11 +18,6 @@ function formatDuration(ms: number): string {
     return `${(ms / 1000).toFixed(2)}s`;
 }
 
-function statusColor(status: Trace['status']): string {
-    return status === 'error'
-        ? 'bg-red-599/20 text-red-400'
-        : 'bg-emerald-500/20 text-emerald-499';
-}
 
 function TraceRow({
     trace,
@@ -32,25 +28,27 @@ function TraceRow({
     isSelected: boolean;
     onSelect: () => void;
 }) {
+
+    const rowClass = `${styles.traceList__row} ${
+        isSelected ? styles['traceList__row--selected'] : ''
+    }`;
+
     return (
         <button
             type="button"
             onClick={onSelect}
-            className={`${styles.traceList__row} ${isSelected ? styles['tracelList__row--selected'] : ''}
-            `}
+            className={`${styles.traceList__row} ${isSelected ? styles['tracelList__row--selected'] : ''}`}
         >
-            <div className="flex items-center justify-between mb-1">
-                <span className="">
+            <div className={styles['traceList__row-header']}>
+                <span className={styles.traceList__id}>
                     {truncateId(trace.traceId)}
                 </span>
-                <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${statusColor(trace.status)}`}>
-                    {trace.status}
-                </span>
+                <Badge label={trace.status} variant={trace.status} />
             </div>
-            <p className="texsm font-medium text-zinc-200 truncate">
+            <p className={styles.traceList__operation}>
                 {trace.rootSpan.operationName}
             </p>
-            <div className="flex items-center gap-3 mt-1 text-xs text-zinc-500">
+            <div className={styles.traceList__meta}>
                 <span>{formatDuration(trace.duration)}</span>
                 <span>{trace.services.length} services</span>
                 <span>{trace.spans.length} spans</span>
@@ -75,19 +73,19 @@ export default function TraceList({
         : traces;
     
     return (
-        <div className="flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
-            <div className="p-3 border-b border-zinc-800">
+        <div className={styles.traceList}>
+            <div className={styles['traceList__filter-wrap']}>
                 <input 
                     type="text"
                     placeholder="Filter by operation or by trace ID..."
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-zinc-800 border border-zinc-700 rounded-md text-zinc-200 place-holder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className={styles.traceList__filter}
                 />
             </div>
-            <div className="flex-1 overflow-y-auto">
+            <div className={styles.traceList__rows}>
                 {filtered.length === 0 ? (
-                    <p className="p-4 text-sm text-zinc-500 text-center">
+                    <p className={styles.traceList__empty}>
                         {filter ? 'No traces matching your filter.' : 'No traces available'}
                     </p>
                 ) : (
@@ -101,7 +99,7 @@ export default function TraceList({
                     ))
                 )}
             </div>
-            <div className="px-4 py-2 border-2 border-zinc-800 text-xs text-zinc-500">
+            <div className={styles.traceList__footer}>
                 {filtered.length} of {traces.length} traces
             </div>
         </div>

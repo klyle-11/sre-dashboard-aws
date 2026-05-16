@@ -148,24 +148,22 @@ export default function TraceWaterfall({ trace }: TraceWaterfallProps) {
     return (
         <div className={styles.waterfall}>
             <div className={styles.waterfall__header}>
-                <div className={"styles.waterfall__header-inner"}>
-                    <div>
-                        <h3 className={styles.waterfall__title}>
-                            {trace?.rootSpan.operationName}
-                        </h3>
-                        <p className={styles.waterfall__id}>
-                            {trace?.traceId}
-                        </p>
-                    </div>
-                    <div className={styles.waterfall__meta}>
-                        <span>{formatMs(trace?.duration ?? 0)}</span>
-                        <span>{trace?.spans.length} spans</span>
-                        <span
-                            className={`${styles.waterfall__status} ${styles[`waterfall__status--${trace?.status ?? 'ok'}`]}`}
-                        >
-                            {trace?.status}
-                        </span>
-                    </div>
+                <div>
+                    <h3 className={styles.waterfall__title}>
+                        {trace?.rootSpan.operationName}
+                    </h3>
+                    <p className={styles.waterfall__id}>
+                        {trace?.traceId}
+                    </p>
+                </div>
+                <div className={styles.waterfall__meta}>
+                    <span>{formatMs(trace?.duration ?? 0)}</span>
+                    <span>{trace?.spans.length} spans</span>
+                    <span
+                        className={`${styles.waterfall__status} ${styles[`waterfall__status--${trace?.status ?? 'ok'}`]}`}
+                    >
+                        {trace?.status}
+                    </span>
                 </div>
             </div>
             <div className={styles.waterfall__body}>

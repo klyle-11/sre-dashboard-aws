@@ -42,6 +42,12 @@
         }
     }
 
+    &__rows {
+        flex: 1;
+        overflow-y: auto;
+        @include scrollbar-thin;
+    }
+
     &__row-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-1); }
     &__id { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
     &__operation { font-size: var(--text-sm); font-weight: 500; @include truncate-1; }
