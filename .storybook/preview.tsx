@@ -20,13 +20,6 @@ const preview: Preview = {
     },
     layout: 'padded',
   },
-  decorators: [
-    (Story) => (
-      <div className="font-sans text-zinc-200 antialiased">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default preview;

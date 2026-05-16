@@ -1,6 +1,6 @@
 import styles from './PanelContainer.module.scss';
 
-interface PanleContainerProps {
+interface PanelContainerProps {
     title: string;
     actions?: React.ReactNode;
     loading?: boolean;

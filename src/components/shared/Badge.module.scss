@@ -7,9 +7,9 @@
     font-weight: 500;
     border-radius: var(--radius-pill);
 
-    @each $name in (ok, error, warning, info, neutrral) {
+    @each $name in (ok, error, warning, info, neutral) {
         &--#{$name} {
-            background: color-mix(in srgb, var(--color-%{$name}) 20%, transparent);
+            background: color-mix(in srgb, var(--color-#{$name}) 20%, transparent);
             color: var(--color-#{$name});
         }
     }
