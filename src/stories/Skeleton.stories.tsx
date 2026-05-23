@@ -20,7 +20,7 @@ export const TextLine: Story = {
 
 export const TextBlock: Story = {
     render: () => (
-        <div className="flex flex-col gap-2 w-64">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '16rem' }}>
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-5/6" />
             <Skeleton className="h-4 w-4/6" />

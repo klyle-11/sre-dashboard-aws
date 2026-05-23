@@ -69,7 +69,7 @@ export default function ServiceMap({ serviceNodes }: ServiceMapProps) {
             <h4>Service map</h4>
             <svg
                 viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
-                className="w-full h-auto"
+                className={styles.serviceMap__svg}
                 role="img"
                 aria-label="Service dependency map showing connection between microservices"
             >
@@ -109,7 +109,7 @@ export default function ServiceMap({ serviceNodes }: ServiceMapProps) {
                         y={y + 10}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        className="text-[8px]"
+                        className={styles['serviceMap__metric-label']}
                     >
                         {node.avgLatency.toFixed(0)}ms | {node.errorRate.toFixed(1)}%
                     </text>

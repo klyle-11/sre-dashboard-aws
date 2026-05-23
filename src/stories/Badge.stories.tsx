@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Badge from '@/components/shared/Badge';
+import styles from '@/components/shared/Badge.module.scss';
 
 const meta: Meta<typeof Badge> = {
     title: 'Shared/Badge',
@@ -35,7 +36,7 @@ export const Neutral: Story = {
 
 export const AllVariants: Story = {
     render: () => (
-        <div className="flex gap-2">
+        <div className={`${styles.traceList__badge} ${styles[`traceList__badge--${statusColor(trace.status)}`]}`}>
             <Badge label="ok" variant="ok" />
             <Badge label="error" variant="error" />
             <Badge label="warning" variant="warning" />

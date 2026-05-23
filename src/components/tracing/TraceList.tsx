@@ -18,7 +18,6 @@ function formatDuration(ms: number): string {
     return `${(ms / 1000).toFixed(2)}s`;
 }
 
-
 function TraceRow({
     trace,
     isSelected,

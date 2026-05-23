@@ -9,6 +9,27 @@
     border-radius: var(--radius-md);
     overflow: hidden;
 
+    &__body {
+        flex: 1 1 0%;
+        overflow-y: auto;
+    }
+
+    &__badge {
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+
+        &--ok {
+            background-color: rgb( 16 185 129 / 0.2);
+            color: #34d399;
+        }
+        &--error {
+            background-color: rgb( 239 68 68 / 0.2);
+            color: #f87171;
+        }
+    }
+
     &__filter-wrap {
         padding: var(--space-3);
         border-bottom: 1px solid var(--color-border);
