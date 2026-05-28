@@ -2,7 +2,7 @@
 
 .shell {
     display: grid;
-    grid-template-columns: auto1fr;
+    grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:
         "sidebar main"

@@ -21,13 +21,16 @@ export default function Sidebar() {
         <aside className={styles.sidebar}>
             <div className={styles.sidebar__header}>
                 <h1 className={styles.sidebar__title}>
-                    M-e-t-al
+                    M-e-t-a-l
                 </h1>
                 <p className={styles.sidebar__subtitle}>Sre dashboard</p>
             </div>
             <nav className={styles.sidebar__nav}>
                 {NAV_ITEMS.map((item) => {
+
                     const isActive = pathname.startsWith(item.href);
+
+                    const itemClass = `${styles.sidebar__item} ${isActive ? styles['sidebar__item--active'] : ''}`;
                     return (
                         <Link 
                             key={item.href}

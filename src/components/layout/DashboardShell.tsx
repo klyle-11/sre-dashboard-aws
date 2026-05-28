@@ -7,16 +7,16 @@ interface DashboardShellProps {
 
 }
 
-export default function DashboardShell({ children }: DashboardShellProps) {
+export default function DashboardShell({ children, statusBar }: DashboardShellProps) {
     return (
         <div className={styles.shell}>
             <div className={styles.shell__sidebar}>
                 <Sidebar />
-                <main className={styles.shell__main}>
-                    {children}
-                </main>
-                {statusBar && <div className={styles.shell__status}>{statusBar}</div>}
             </div>
+            <main className={styles.shell__main}>
+                {children}
+            </main>
+            {statusBar && <div className={styles.shell__status}>{statusBar}</div>}
         </div>
     );
 }

@@ -14,7 +14,7 @@ export default function TracingPage() {
     const selectedTrace = traces.find((t) => t.traceId === selectedTraceId) ?? null;
 
     return (
-        <div className="page-container">
+        <div className={styles.pageContainer}>
             <div className={styles.header}>
                 <h2 className={styles.title}>Dist. tracing</h2>
             </div>
